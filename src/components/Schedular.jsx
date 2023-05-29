@@ -2,7 +2,7 @@ import 'dhtmlx-scheduler';
 import 'dhtmlx-scheduler/codebase/dhtmlxscheduler_material.css';
 import React, { useEffect, useRef, useState } from 'react';
 import { filterData, schAppointmentType } from '../data/data';
-import ClientAppointment from '../events-component/ClientAppointment';
+import ClientAppointment from '../schedular-component/ClientAppointment';
 
 const scheduler = window.scheduler;
 
@@ -18,6 +18,10 @@ const Schedular = (props) => {
 
     const handleOptionChange = (event) => {
         setSelectedOption(event.target.value);
+
+        if(document.getElementById('patient-details') !== null) {
+            document.getElementById('patient-details').remove();
+        }
     };
 
     useEffect(()=> {
@@ -114,43 +118,18 @@ const Schedular = (props) => {
             return false;
         };
 
-        // scheduler.config.lightbox.sections= [
-        //     {name:"description", height:130, map_to:"text", type:"textarea", focus:true},
-        //     {name:"Work", height:23, type:"select", options: eventTypes, default_value: "appointment", map_to: eventTypes},
-        //     {name:"Environment", height:23, type:"select", options: eventEnvironments, default_value: "all", map_to: eventEnvironments },
-        //     {name:"time", height:72, type:"time", map_to:"auto"}
-        // ];
-
          // Custom event popup
         var html = function(id) { return document.getElementById(id); }; //just a helper
         scheduler.showLightbox = function(id) {
             var ev = scheduler.getEvent(id);
             scheduler.startLightbox(id, html("appointment_form"));
-
-            html("description").focus();
-            html("description").value = ev.text;
-            html("custom1").value = ev.custom1 || "";
-            html("custom2").value = ev.custom2 || "";
         };
-        function save_form() {
-            var ev = scheduler.getEvent(scheduler.getState().lightbox_id);
-            ev.text = html("description").value;
-            ev.custom1 = html("custom1").value;
-            ev.custom2 = html("custom2").value;
-
-            scheduler.endLightbox(true, html("appointment_form"));
-        }
+        
         function close_form() {
             scheduler.endLightbox(false, html("appointment_form"));
         }
-        function delete_event() {
-            var event_id = scheduler.getState().lightbox_id;
-            scheduler.endLightbox(false, html("appointment_form"));
-            scheduler.deleteEvent(event_id);
-        }
-        scheduler.event(document.querySelector("#appointment_form [id='save']"), "click", save_form);
+
         scheduler.event(document.querySelector("#appointment_form [id='close']"), "click", close_form);
-        scheduler.event(document.querySelector("#appointment_form [id='delete']"), "click", delete_event);
 
         scheduler.init(schedular_elem.current, new Date(), "week");
 
@@ -210,12 +189,6 @@ const Schedular = (props) => {
     return (
         <>
             <div id="appointment_form">
-                <label htmlFor="description">Event text </label>
-                <input type="text" name="description" defaultValue="" id="description" />
-                <label htmlFor="custom1">Custom 1 </label>
-                <input type="text" name="custom1" defaultValue="" id="custom1"/>
-                <label htmlFor="custom2">Custom 2 </label>
-                <input type="text" name="custom2" defaultValue="" id="custom2"/>
                 
                 <div className="form-wrapper">
                     {
@@ -242,8 +215,9 @@ const Schedular = (props) => {
                                                             </div>
                                                             {selectedOption === option.value && (
                                                                 selectedOption === 'client_appointment' ?
-                                                                    <ClientAppointment /> : 
-                                                                ''
+                                                                <div id='patient-list-wrapper'>
+                                                                    <ClientAppointment />
+                                                                </div> :  ''
                                                             )}
                                                         </div>
                                                     </React.Fragment>
@@ -258,9 +232,7 @@ const Schedular = (props) => {
                 </div>
                 
                 <div className='btn-wrapper'>
-                    <button id="save">Save</button>
                     <button id="close">Close</button>
-                    <button id="delete">Delete</button>
                 </div>
             </div>
             <div className="sch-wrapper">
