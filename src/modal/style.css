@@ -1,0 +1,8 @@
+.popup-wrapper {
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: red;
+    height: 100px;
+    width: 100px;
+}
