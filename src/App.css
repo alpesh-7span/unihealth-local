@@ -84,17 +84,6 @@ h1 {
 .wx-event-calendar-wrapper .header .label, .day.weekend:not(.selected):not(.out) {
     color: #000 !important;
 }
-/* .wx-event-calendar-checkbox:before {
-	content: '#';
-}
-.wx-event-calendar-checkbox {
-    background: transparent !important;
-    border: none !important;
-	color: var(--wx-border) !important;
-}
-.wx-event-calendar-checkbox .wxi-check {
-	display: none !important;
-} */
 
 .wx-event-calendar-editor-wrapper .field ~ .field {
     display: none;
@@ -116,56 +105,50 @@ h1 {
 }
 
 /* custom popup html style */
-#patient-details input:focus,
-#custom-html .field input:focus {
-    border: var(--wx-input-border-focus);
-}
 #patient-details select,
 #patient-details input,
 #custom-html .field input {
 	display: block;
-    width: var(--wx-input-width);
-    height: var(--wx-input-height);
+    height: 32px;
     max-width: 100%;
-    padding: var(--wx-input-padding);
+    padding: 5px 8px;
     outline: none;
-    font-family: var(--wx-input-font-family);
-    font-size: var(--wx-input-font-size);
-    line-height: var(--wx-input-line-height);
-    font-weight: var(--wx-input-font-weigth);
-    text-align: var(--wx-input-text-align);
-    color: var(--wx-input-font-color);
-    border: var(--wx-input-border);
-    border-radius: var(--wx-input-border-radius);
-    background: var(--wx-input-background);
+    font-family: Roboto, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    line-height: 1.4;
+    font-weight: 400;
+    color: #000;
+    border: 1px solid #dfdfdf;
+    border-radius: 2px;
+    background: transparent;
+    width: 100%;
+    margin: 0;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 #custom-html .field .field-control {
     display: flex;
+    margin: 10px 0;
 }
 #patient-details button.secondary:hover:not([disabled]),
 #custom-html .field button.secondary:hover:not([disabled]) {
-	background: var(--wx-color-secondary-hover);
-    color: var(--wx-color-secondary-font-hover);
+	background: rgba(0, 0, 0, 0.1);
+    color: rgba(0, 0, 0, 0.7);
 }
 #patient-details button.secondary:not([disabled]),
 #custom-html .field button.secondary:not([disabled]) {
-	background: var(--wx-color-secondary);
-    color: var(--wx-color-secondary-font);
-    border-color: var(--wx-color-secondary-border);
+	background: rgba(0, 0, 0, 0.1);
+    color: rgba(0, 0, 0, 0.7);
 }
 #patient-details button.border-btn:not([disabled]),
 #custom-html .field button.border-btn:not([disabled]) {
 	background: transparent;
-    color: var(--wx-color-secondary-font);
-    border-color: var(--wx-color-secondary);
+    color: rgba(0, 0, 0, 0.7);
 }
 #patient-details button.border-btn:hover:not([disabled]),
 #custom-html .field button.border-btn:hover:not([disabled]) {
-	background: var(--wx-color-secondary);
-    color: var(--wx-color-secondary-font);
-    border-color: var(--wx-color-secondary-border);
+	background: rgba(0, 0, 0, 0.1);
+    color: rgba(0, 0, 0, 0.7);
 }
 #patient-details select[disabled],
 #patient-details input[disabled],
@@ -173,9 +156,9 @@ h1 {
 #custom-html .field input[disabled],
 #custom-html .field button[disabled] {
 	cursor: not-allowed;
-    background: var(--wx-color-disabled);
+    background: #ededed;
     border-color: transparent;
-    color: var(--wx-color-font-disabled);
+    color: rgba(0, 0, 0, 0.3);
 }
 #patient-details button,
 #custom-html .field button {
@@ -185,16 +168,15 @@ h1 {
     text-decoration: none;
     text-align: center;
     letter-spacing: normal;
-    text-transform: var(--wx-button-text-transform);
-    font-family: var(--wx-button-font-family);
-    font-size: var(--wx-button-font-size);
-    line-height: var(--wx-button-line-height);
-    font-weight: var(--wx-button-font-weigth);
-    padding: var(--wx-button-padding);
-    border: var(--wx-button-border);
-    border-radius: var(--wx-button-border-radius);
-    background-color: var(--wx-button-background);
-    color: var(--wx-button-font-color);
+    font-family: Roboto, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    line-height: 1.4;
+    font-weight: 900;
+    padding: 5px 20px;
+    border: none;
+    border-radius: 2px;
+    background-color: rgb(179, 204, 255);
+    color: rgba(0, 0, 0, 0.7);
     cursor: pointer;
     box-shadow: none;
     transition: none;
@@ -212,13 +194,12 @@ h1 {
 #patient-details .field label,
 #custom-html .field label{
     display: block;
-    margin: var(--wx-label-margin);
-    padding: var(--wx-label-padding);
-    font-family: var(--wx-label-font-family);
-    font-size: var(--wx-label-font-size);
-    line-height: var(--wx-label-line-height);
-    font-weight: var(--wx-label-font-weight);
-    color: var(--wx-label-font-color);
+    margin-bottom: 8px;
+    font-family: Roboto, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    line-height: 1.4;
+    font-weight: 900;
+    color: #000;
 }
 #custom-html {
     margin-top: 20px;
