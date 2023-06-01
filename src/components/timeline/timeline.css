@@ -1,0 +1,52 @@
+.timeline-root {
+    flex-grow: 1;
+}
+
+.timeline-schedule-here {
+    width: 100%;
+    height: 100%;
+}
+
+.dhx_cal_navline {
+    position: static !important;
+    height: 40px !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(240, 240, 240);
+    z-index: 999;
+}
+
+.timeline-navbar {
+    position: static !important;
+    width: 100%;
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.timeline-navbar div {
+    position: static;
+}
+
+.timeline-navbar div:first-child > button {
+    padding: 4px 16px;
+    outline: none;
+    cursor: pointer;
+}
+.timeline-navbar div:first-child > button:not(:first-child) {
+    margin-left: 10px;
+}
+
+.timeline-navbar > div:last-child {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dhx_cal_date {
+    width: fit-content !important;
+    z-index: 999 !important;
+}
